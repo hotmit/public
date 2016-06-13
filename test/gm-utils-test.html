@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>GM Utils Test</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script src="../gm-utils.min.js"></script>
+
+<script>
+	(function(){
+		var _ju = {};
+
+		JU.publish(JU.__JU, false, true);
+		delete JU.__JU;
+		JU.activate(_ju);
+		
+		console.log(_ju.Str);
+	}());
+</script>
+</head>
+<body>
+	
+</body>
+</html>
