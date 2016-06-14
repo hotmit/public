@@ -3,22 +3,68 @@
 <head>
 <meta charset=utf-8 />
 <title>GM Utils Test</title>
+<style>
+div.row {
+	display: block;
+	width: 200px;
+	
+	font-size: 1.5em;
+}
+span.label {
+	color: purple;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+span.content {
+	color: red;
+	padding-left: 15px;
+}
+.line-break{
+	height: 15px;
+	width: 100%;
+}
+</style>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script src="../gm-utils.min.js"></script>
-
-<script>
-	(function(){
-		var _ju = {};
-
-		JU.publish(JU.__JU, false, true);
-		delete JU.__JU;
-		JU.activate(_ju);
-		
-		console.log(_ju.Str);
-	}());
-</script>
 </head>
 <body>
-	
+	<div id="result">
+	</div>
+
+	<script>
+		(function(){
+			var _ju = {};
+
+			JU.publish(JU.__JU, false, false);
+			delete JU.__JU;
+			JU.activate(_ju);
+			
+			console.log(_ju);
+			
+			$(function($){
+				var $result = $('#result'), lib;
+				
+				function displayLib(lib){
+					var fields = ['class', 'version', 'type'];
+					
+					$.each(fields, function(i, prop){
+						var $row = $('<div/>').addClass('row');
+						$row.append($('<span/>').addClass('label').html(prop + ':'));
+						$row.append($('<span/>').addClass('content').html(lib[prop]));
+						
+						$result.append($row);
+					});
+					$result.append($('<div />').addClass('line-break'));
+				}
+				
+				for (lib in _ju){
+					if (typeof _ju[lib] === 'object' && 'type' in _ju[lib]){
+						displayLib(_ju[lib]);
+					}
+				}
+			});
+		}(jQuery));
+	</script>	
 </body>
 </html>

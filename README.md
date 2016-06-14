@@ -5,14 +5,14 @@
 ```javascript
 var _ju = {};
 
-JU.publish(JU.__JU, false, true);
+JU.publish(JU.__JU, false, false);
 delete JU.__JU;
 JU.activate(_ju);
 
 // OR
 
 // This will publish all the library to the window instance
-JU.publish(JU.__JU, true, true);
+JU.publish(JU.__JU, true, false);
 delete JU.__JU;
 ```
 
