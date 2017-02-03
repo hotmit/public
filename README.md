@@ -1,6 +1,16 @@
 # Public
 
 ---
+### JU CDN
+* All lib functions is imported into window._ju object
+https://github.com/hotmit/public/blob/master/js/gm-ju-v1.01.0.min.js
+
+```javascript
+// Usage: 
+_ju.Str.trim('hello ');
+```
+
+---
 ### Activate gm-utils.js
 ```javascript
 var _ju = {};
